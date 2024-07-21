@@ -53,7 +53,12 @@ class MainActivity : ComponentActivity() {
 //                    Greeting(
 //                        name = "Android", modifier = Modifier.padding(innerPadding)
 //                    )
-                    newCarList()
+//                    TaskList2()
+                    LongCard()
+//                    newCarList()
+//                    NewCar()
+//                    TaskList()
+//                    Infocard()
 //                    RatingCard()
                 }
             }
@@ -242,10 +247,16 @@ fun newCarList(modifier: Modifier = Modifier) {
     val myImage = listOf(R.drawable.supercar1,R.drawable.supercar2,
         R.drawable.supercar3,R.drawable.supercar4,
         R.drawable.supercar5,R.drawable.supercar6)
+
+    Image(painter = painterResource(id = R.drawable.superman),
+        contentDescription = null,
+        modifier = Modifier
+            .fillMaxWidth()
+            .fillMaxHeight())
     LazyRow(
         horizontalArrangement = Arrangement.spacedBy(8.dp),
         modifier = modifier
-            .fillMaxSize()
+//            .fillMaxSize()
             .padding(8.dp)
     ) {
         itemsIndexed(myCar){
@@ -257,7 +268,8 @@ fun newCarList(modifier: Modifier = Modifier) {
                 ),
                 modifier = Modifier
                     .padding(8.dp)
-                    .width(300.dp),
+                    .width(360.dp)
+                    .height(400.dp),
                 elevation = CardDefaults.cardElevation(
                     defaultElevation = 10.dp
                 ),
@@ -280,7 +292,7 @@ fun newCarList(modifier: Modifier = Modifier) {
                                     scaleY = imgScle
                                 )
                                 drawContext.transform.translate(
-                                    left = 0f,
+                                    left = 20f,
                                     top = 100f
                                 )
                                 drawCircle(
@@ -288,8 +300,8 @@ fun newCarList(modifier: Modifier = Modifier) {
                                     radius = 300f
                                 )
                                 drawCircle(
-                                        color = Color.Yellow.copy(alpha = 0.2f),
-                                radius = 200f
+                                    color = Color.Yellow.copy(alpha = 0.2f),
+                                    radius = 200f
                                 )
                             }
                     )
@@ -312,4 +324,142 @@ private fun newCarListPreview() {
 @Composable
 private fun NewCardPreview() {
     NewCar()
+}
+
+@Composable
+fun LongCard(modifier: Modifier = Modifier) {
+
+    val Car = listOf("supercar1\nfirst car in the\n world","supercar2","supercar3","supercar4","supercar5","supercar6")
+    val CarImg = listOf(R.drawable.supercar1,R.drawable.supercar2,
+        R.drawable.supercar3,R.drawable.supercar4,
+        R.drawable.supercar5,R.drawable.supercar6,)
+
+    Image(painter = painterResource(id = R.drawable.place),
+        contentDescription = null,
+        modifier = Modifier.fillMaxSize())
+//    val Super = listOf("supercar1","supercar2","supercar3","supercar4","supercar5","supercar6")
+//    val SuperImg = listOf(R.drawable.supercar1,R.drawable.supercar2,
+//        R.drawable.supercar3,R.drawable.supercar4,
+//        R.drawable.supercar5,R.drawable.supercar6)
+//    val Cloths = listOf("supercar1","supercar2","supercar3","supercar4","supercar5","supercar6")
+//    val ClothsImg = listOf(R.drawable.supercar1,R.drawable.supercar2,
+//        R.drawable.supercar3,R.drawable.supercar4,
+//        R.drawable.supercar5,R.drawable.supercar6)
+//    val Places = listOf("supercar1","supercar2","supercar3","supercar4","supercar5","supercar6")
+//    val PlacesImg = listOf(R.drawable.supercar1,R.drawable.supercar2,
+//        R.drawable.supercar3,R.drawable.supercar4,
+//        R.drawable.supercar5,R.drawable.supercar6)
+//    val Plants = listOf("supercar1","supercar2","supercar3","supercar4","supercar5","supercar6")
+//    val PlantsImg = listOf(R.drawable.supercar1,R.drawable.supercar2,
+//        R.drawable.supercar3,R.drawable.supercar4,
+//        R.drawable.supercar5,R.drawable.supercar6)
+LazyColumn (
+    verticalArrangement = Arrangement.spacedBy(8.dp),
+    modifier = modifier
+        .fillMaxSize()
+        .padding(8.dp)
+
+){
+    itemsIndexed(Car){
+        index, item ->
+
+//        LazyColumn(
+//            verticalArrangement = Arrangement.spacedBy(8.dp),
+//            modifier = modifier
+//                .fillMaxSize()
+//                .padding(8.dp)
+//        ) {
+
+            Card(
+                colors = CardDefaults.cardColors(
+                    containerColor = MaterialTheme.colorScheme.background
+//                    containerColor = Color.Red
+                    ),
+                elevation = CardDefaults.cardElevation(
+                    defaultElevation = 30.dp
+                ),
+                modifier = Modifier
+                    .padding(8.dp)
+                    .width(600.dp)
+//                    .height(600.dp),
+            ) {
+                Row (
+                    verticalAlignment = Alignment.CenterVertically,
+                ){
+                    Image(painter = painterResource(id = CarImg[index]), contentDescription = null,
+                        modifier = Modifier
+                            .size(400.dp)
+                            .weight(1f)
+                            .drawBehind {
+                                drawCircle(
+                                    color = Color.Blue.copy(alpha = 0.1f),
+                                    radius = 550f
+                                )
+                                drawContext.transform.translate(
+                                    left = 20f,
+                                    top = 50f
+                                )
+                                drawCircle(
+                                    color = Color.Red.copy(alpha = 0.2f),
+                                    radius = 450f
+                                )
+                                drawCircle(
+                                    color = Color.Yellow.copy(alpha = 0.2f),
+                                    radius = 350f
+                                )
+                            }
+
+                    )
+                    Text(text = item, style = MaterialTheme.typography.headlineSmall,
+
+                        fontWeight = FontWeight.Bold,
+                        color = MaterialTheme.colorScheme.onBackground,
+                    )
+                }
+            }
+        }
+//    }
+
+}
+
+
+
+}
+@Preview
+@Composable
+private fun LongCardPreview() {
+    LongCard()
+}
+@Composable
+fun TaskList2(modifier: Modifier = Modifier) {
+    Image(painter = painterResource(id = R.drawable.superman),
+        contentDescription = null,
+        modifier = Modifier
+            .fillMaxWidth()
+            .fillMaxHeight())
+
+}
+@Preview
+@Composable
+private fun TaskList2Preview() {
+    TaskList2()
+}
+@Preview
+@Composable
+private fun CardonePreview() {
+    cardone()
+}
+@Composable
+fun Cardder(modifier: Modifier = Modifier) {
+Image(painter = painterResource(id = R.drawable.place),contentDescription = null,)
+//    modifier = Modifier
+//        .fillMaxWidth())
+//        .fillMaxHeight())
+
+
+}
+@Preview
+@Composable
+private fun CardderPreview() {
+    Cardder()
 }
